@@ -15,8 +15,8 @@ steps:
 - bash: echo $(Build.ArtifactStagingDirectory)
 
 
-stages:
-- stage: Build
-- stage: DevDeploy
-- stage: QADeploy
-- stage: ProdDeploy
+# stages:
+# - stage: Build
+# - stage: DevDeploy
+# - stage: QADeploy
+# - stage: ProdDeploy
