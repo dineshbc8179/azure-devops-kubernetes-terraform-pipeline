@@ -1,6 +1,4 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+# MultiJob Pipeline with dependsOn Keyword
 
 trigger:
 - master
@@ -12,9 +10,38 @@ jobs:
 - job: Job1
   steps:
   - script: echo job1-- Hello, world!
-    displayName: 'Run a one-line script'
+    displayName: 'Run a one-line script Job1'
 
   - script: |
       echo Add other tasks to build, test, and deploy your project.
       echo See https://aka.ms/yaml
     displayName: 'Run a multi-line script'
+
+- job: Job2
+  steps:
+  - script:  echo Job2 started
+    displayName: Job2 Run a multi-Line script 
+
+- job: Job3
+  dependsOn: Job1
+  steps:
+  - script: echo Job3 started
+    displayName: Job3 Run a mulit-Line Script    
+
+
+- job: Job4
+  dependsOn: Job2
+  steps:
+  - script: echo Job4 started
+    displayName: Job4 Run a mulit-Line Script        
+
+
+- job: Job5
+  dependsOn: 
+  - Job1
+  - Job2
+  - Job3
+  - Job4
+  steps:
+  - script: echo Job5 started
+    displayName: Job5 Run a mulit-Line Script        
