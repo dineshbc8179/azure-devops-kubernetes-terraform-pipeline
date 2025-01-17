@@ -23,17 +23,21 @@ stages:
       - job: FirstJob
         steps:
           - bash: echo Hi! this is TeststageJob
-          - bash: echo $(environment) job -- customized!!!!
+          - bash: echo $(environment) deployjob -- customized!!!!
   - stage: Acceptance
+    variables:
+      environment: Acceptance
     jobs:
     - job: FirstJob
       steps:
         - bash: echo Hi! this is AcceptancestageJob
-        - bash: echo customized job
+        - bash: echo $(environment)deployJob -- customized!!!!
 
   - stage: Production
+    variables:
+      environment: Prod
     jobs:
       - job: FirstJob
         steps:
         - bash: echo ProdstageJob
-        - bash: echo customized job
+        - bash: echo $(environment) deployjob -- customized!!!!
