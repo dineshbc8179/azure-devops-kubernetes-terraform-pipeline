@@ -19,8 +19,9 @@ stages:
     jobs:
       - job: BuildFirstJob
         steps:
-          - bash: echo Hi! this is BuildFirstJob
-          - bash: echo $(stage1) variable
+        - script: |
+              echo ${{variables.name}}
+             
 
   - stage: Test
     variables:
