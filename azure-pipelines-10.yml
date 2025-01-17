@@ -23,6 +23,29 @@ stages:
           - bash: echo $(stage1) variable
 
   - stage: Test
+    variables:
+      environment: Test
+    jobs:
+      - job: Firstjob
+        steps:
+        - bash: echo Hi! this is TestFirstJob
+        - bash: echo $(environment) variable
+
 
   - stage: Acceptance
+    variables:
+      environment: Acceptance
+    jobs:
+      - job: Firstjob
+        steps:
+        - bash: echo Hi! this is AccFirstJob
+        - bash: echo $(environment) variable
+
   - stage: Production
+    variables:
+      environment: Production
+    jobs:
+      - job: Firstjob
+        steps:
+        - bash: echo Hi! this is ProdFirstJob
+        - bash: echo $(environment) variable
