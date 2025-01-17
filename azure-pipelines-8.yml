@@ -21,18 +21,23 @@ stages:
       - bash: echo build SecondJob
       
 - stage: Test
+  dependsOn: Build
   jobs:
     - job: TestEnvJob
       steps:
         - bash: echo build TestEnvJob
 
 - stage: Acceptance
+  dependsOn: Build
   jobs:
     - job: AccEnvJob
       steps:
       - bash: echo build AccEnvJob
     
-- stage: Product
+- stage: Production
+  dependsOn:
+  - Test
+  - Acceptance
   jobs:
   - job: ProdEnvJob
     steps:
