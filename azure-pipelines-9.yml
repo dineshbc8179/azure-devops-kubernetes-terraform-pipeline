@@ -18,7 +18,7 @@ stages:
           - bash: echo $(pipelinevariable)
   - stage: Test
     variables:
-      - environment: Test
+      environment: Test
     jobs:
       - job: FirstJob
         steps:
